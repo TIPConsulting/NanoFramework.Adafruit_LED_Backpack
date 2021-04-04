@@ -3,7 +3,7 @@ using System.Device.I2c;
 
 namespace NanoFramework.Adafruit_LED_Backpack
 {
-    public class Adafruit_LEDBackpack
+    public class Adafruit_LEDBackpack : IDisposable
     {
         private const byte REGISTER_BRIGHTNESS = 0xE0;
         private const byte REGISTER_BLINKRATE = 0x80;
@@ -28,22 +28,22 @@ namespace NanoFramework.Adafruit_LED_Backpack
             0x71, /* F */
         };
 
-        protected static readonly short[] _alphaFontTable =
+        protected static readonly ushort[] _alphaFontTable =
         {
             0b0000000000000001, 0b0000000000000010, 0b0000000000000100,
             0b0000000000001000, 0b0000000000010000, 0b0000000000100000,
             0b0000000001000000, 0b0000000010000000, 0b0000000100000000,
             0b0000001000000000, 0b0000010000000000, 0b0000100000000000,
             0b0001000000000000, 0b0010000000000000, 0b0100000000000000,
-            short.MinValue, 0b0000000000000000, 0b0000000000000000,
+            0b1000000000000000, 0b0000000000000000, 0b0000000000000000,
             0b0000000000000000, 0b0000000000000000, 0b0000000000000000,
             0b0000000000000000, 0b0000000000000000, 0b0000000000000000,
             0b0001001011001001, 0b0001010111000000, 0b0001001011111001,
             0b0000000011100011, 0b0000010100110000, 0b0001001011001000,
             0b0011101000000000, 0b0001011100000000,
             0b0000000000000000, //
-            0b0000000000000110, // !
-            0b0000001000100000, // "
+            0b0000000000000110, // !    33
+            0b0000001000100000, // "    34
             0b0001001011001110, // #
             0b0001001011101101, // $
             0b0000110000100100, // %
@@ -140,7 +140,7 @@ namespace NanoFramework.Adafruit_LED_Backpack
         };
 
         public I2cDevice I2cDevice { get; }
-        public short[] DisplayBuffer { get; }
+        public ushort[] DisplayBuffer { get; }
 
         /// <summary>
         /// Creae new instance
@@ -148,7 +148,7 @@ namespace NanoFramework.Adafruit_LED_Backpack
         /// <param name="ConnSetting"></param>
         public Adafruit_LEDBackpack(I2cConnectionSettings ConnSetting)
         {
-            DisplayBuffer = new short[8];
+            DisplayBuffer = new ushort[8];
             I2cDevice = I2cDevice.Create(ConnSetting);
         }
 
@@ -199,25 +199,24 @@ namespace NanoFramework.Adafruit_LED_Backpack
         /// </summary>
         public void Render()
         {
-            _ = I2cDevice.WriteByte(0);
-
             var val = new SpanByte(new byte[] {
+                (byte)0,
                 (byte)(DisplayBuffer[0] & 0xFF),
-                (byte)(DisplayBuffer[0] >> 8),
+                (byte)((DisplayBuffer[0] >> 8) & 0xFF),
                 (byte)(DisplayBuffer[1] & 0xFF),
-                (byte)(DisplayBuffer[1] >> 8),
+                (byte)((DisplayBuffer[1] >> 8) & 0xFF),
                 (byte)(DisplayBuffer[2] & 0xFF),
-                (byte)(DisplayBuffer[2] >> 8),
+                (byte)((DisplayBuffer[2] >> 8) & 0xFF),
                 (byte)(DisplayBuffer[3] & 0xFF),
-                (byte)(DisplayBuffer[3] >> 8),
+                (byte)((DisplayBuffer[3] >> 8) & 0xFF),
                 (byte)(DisplayBuffer[4] & 0xFF),
-                (byte)(DisplayBuffer[4] >> 8),
+                (byte)((DisplayBuffer[4] >> 8) & 0xFF),
                 (byte)(DisplayBuffer[5] & 0xFF),
-                (byte)(DisplayBuffer[5] >> 8),
+                (byte)((DisplayBuffer[5] >> 8) & 0xFF),
                 (byte)(DisplayBuffer[6] & 0xFF),
-                (byte)(DisplayBuffer[6] >> 8),
+                (byte)((DisplayBuffer[6] >> 8) & 0xFF),
                 (byte)(DisplayBuffer[7] & 0xFF),
-                (byte)(DisplayBuffer[7] >> 8),
+                (byte)((DisplayBuffer[7] >> 8) & 0xFF),
             });
 
             _ = I2cDevice.Write(val);
@@ -238,5 +237,9 @@ namespace NanoFramework.Adafruit_LED_Backpack
             DisplayBuffer[7] = 0;
         }
 
+        public void Dispose()
+        {
+            I2cDevice.Dispose();
+        }
     }
 }
