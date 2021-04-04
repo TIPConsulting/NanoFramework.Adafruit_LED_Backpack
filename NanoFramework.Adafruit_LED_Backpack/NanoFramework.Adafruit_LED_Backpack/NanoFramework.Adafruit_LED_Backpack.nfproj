@@ -15,6 +15,7 @@
     <RootNamespace>NanoFramework.Adafruit_LED_Backpack</RootNamespace>
     <AssemblyName>NanoFramework.Adafruit_LED_Backpack</AssemblyName>
     <TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
+    <DocumentationFile>.\NanoFramework.Adafruit_LED_Backpack.xml</DocumentationFile>
   </PropertyGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.props" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.props')" />
   <ItemGroup>

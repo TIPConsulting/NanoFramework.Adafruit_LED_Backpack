@@ -264,3 +264,4 @@ project.lock.json
 /ArdNetAppClient/ArdNetAppClient/Entitlements.plist
 /ArdNetAppClient/ArdNetAppClient/Info.plist
 *.pubxml
+!**/Resources/BuildScripts/**

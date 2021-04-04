@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NanoFramework.Adafruit_LED_Backpack</name>
+    </assembly>
+    <members>
+        <member name="M:NanoFramework.Adafruit_LED_Backpack.Adafruit_AlphaNum4.#ctor(System.Device.I2c.I2cConnectionSettings)">
+            <inheritdoc/>
+        </member>
+        <member name="M:NanoFramework.Adafruit_LED_Backpack.Adafruit_AlphaNum4.WriteDigitRaw(System.Byte,System.UInt16)">
+            <summary>
+            Write single character of alphanumeric display as raw bits (not a general print function).
+            Writes to buffer, but does not print to screen
+            </summary>
+            <param name="Position">Character index (0-3)</param>
+            <param name="Bitmask">Segment bitmask</param>
+        </member>
+        <member name="M:NanoFramework.Adafruit_LED_Backpack.Adafruit_AlphaNum4.WriteDigitAscii(System.Byte,System.Char,System.Boolean)">
+            <summary>
+            Write single ASCII character to alphanumeric display.
+            </summary>
+            <param name="Position">Character index (0-3)</param>
+            <param name="AsciiChar">ASCII character</param>
+            <param name="dot">If true, also light corresponding dot segment</param>
+        </member>
+        <member name="M:NanoFramework.Adafruit_LED_Backpack.Adafruit_AlphaNum4.WriteDigitAscii(System.Byte,System.UInt16,System.Boolean)">
+            <summary>
+            Write single ASCII character to alphanumeric display.
+            </summary>
+            <param name="Position">Character index (0-3)</param>
+            <param name="AsciiChar">ASCII character</param>
+            <param name="dot">If true, also light corresponding dot segment</param>
+        </member>
+        <member name="M:NanoFramework.Adafruit_LED_Backpack.Adafruit_LEDBackpack.#ctor(System.Device.I2c.I2cConnectionSettings)">
+            <summary>
+            Creae new instance
+            </summary>
+            <param name="ConnSetting"></param>
+        </member>
+        <member name="M:NanoFramework.Adafruit_LED_Backpack.Adafruit_LEDBackpack.Begin">
+            <summary>
+            Start I2C and initialize display state (blink off, full brightness)
+            </summary>
+        </member>
+        <member name="M:NanoFramework.Adafruit_LED_Backpack.Adafruit_LEDBackpack.SetBrightness(System.Byte)">
+            <summary>
+            Set display brightness.
+            </summary>
+            <param name="Brightness">Brightness: 0 (min) to 15 (max).</param>
+        </member>
+        <member name="M:NanoFramework.Adafruit_LED_Backpack.Adafruit_LEDBackpack.SetBlinkRate(NanoFramework.Adafruit_LED_Backpack.BlinkRate)">
+            <summary>
+            Set display blink rate.
+            </summary>
+        </member>
+        <member name="M:NanoFramework.Adafruit_LED_Backpack.Adafruit_LEDBackpack.Render">
+            <summary>
+            Issue buffered data in RAM to display.
+            </summary>
+        </member>
+        <member name="M:NanoFramework.Adafruit_LED_Backpack.Adafruit_LEDBackpack.Clear">
+            <summary>
+             Clear display.
+            </summary>
+        </member>
+        <member name="T:NanoFramework.Adafruit_LED_Backpack.BlinkRate">
+            <summary>
+            Blink setting values. Register 0x80
+            </summary>
+        </member>
+        <member name="F:NanoFramework.Adafruit_LED_Backpack.BlinkRate.SteadyOn">
+            <summary>
+            I2C value for steady on
+            </summary>
+        </member>
+        <member name="F:NanoFramework.Adafruit_LED_Backpack.BlinkRate.SteadyOff">
+            <summary>
+            I2C value for steady off
+            </summary>
+        </member>
+        <member name="F:NanoFramework.Adafruit_LED_Backpack.BlinkRate.BlinkOff">
+            <summary>
+            Blink disabled
+            </summary>
+        </member>
+        <member name="F:NanoFramework.Adafruit_LED_Backpack.BlinkRate.Blink2hz">
+            <summary>
+            I2C value for 2 Hz blink
+            </summary>
+        </member>
+        <member name="F:NanoFramework.Adafruit_LED_Backpack.BlinkRate.Blink1hz">
+            <summary>
+            I2C value for 1 Hz blink
+            </summary>
+        </member>
+        <member name="F:NanoFramework.Adafruit_LED_Backpack.BlinkRate.BlinkHalfhz">
+            <summary>
+            I2C value for 0.5 Hz blink
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>NanoFramework.Adafruit_LED_Backpack</id>
+    <version>1.0.0-preview.1</version>
+    <authors>aalbert</authors>
+    <owners>TIPConsulting</owners>
+    <title>NanoFramework.Adafruit_LED_Backpack</title>
+    <description>Nanoframework implementation of Adafruit LED backpack library</description>
+    <developmentDependency>false</developmentDependency>
+    <projectUrl>https://github.com/TIPConsulting/NanoFramework.Adafruit_LED_Backpack</projectUrl>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <repository type="git" url="https://github.com/TIPConsulting/NanoFramework.Adafruit_LED_Backpack"></repository>
+    <dependencies>
+        <dependency id="nanoFramework.CoreLibrary" version="1.10.3-preview.7" />
+	<dependency id="nanoFramework.System.Device.I2c" version="1.0.1-preview.25" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="NanoFramework.Adafruit_LED_Backpack\bin\Release\NanoFramework.Adafruit_LED_Backpack.dll" target="lib\netnanoframework10\NanoFramework.Adafruit_LED_Backpack.dll" />
+    <file src="NanoFramework.Adafruit_LED_Backpack\bin\Release\NanoFramework.Adafruit_LED_Backpack.pdb" target="lib\netnanoframework10\NanoFramework.Adafruit_LED_Backpack.pdb" />
+    <file src="NanoFramework.Adafruit_LED_Backpack\bin\Release\NanoFramework.Adafruit_LED_Backpack.pdbx" target="lib\netnanoframework10\NanoFramework.Adafruit_LED_Backpack.pdbx" />
+    <file src="NanoFramework.Adafruit_LED_Backpack\bin\Release\NanoFramework.Adafruit_LED_Backpack.pe" target="lib\netnanoframework10\NanoFramework.Adafruit_LED_Backpack.pe" />
+    <file src="NanoFramework.Adafruit_LED_Backpack\bin\Release\NanoFramework.Adafruit_LED_Backpack.xml" target="lib\netnanoframework10\NanoFramework.Adafruit_LED_Backpack.xml" />
+  </files>
+</package>
