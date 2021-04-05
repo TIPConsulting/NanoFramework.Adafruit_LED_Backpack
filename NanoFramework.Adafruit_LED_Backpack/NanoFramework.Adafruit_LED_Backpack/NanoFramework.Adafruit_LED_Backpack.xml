@@ -4,6 +4,14 @@
         <name>NanoFramework.Adafruit_LED_Backpack</name>
     </assembly>
     <members>
+        <member name="T:NanoFramework.Adafruit_LED_Backpack.Adafruit_AlphaNum4">
+            <summary>
+            Interface for Adafruit Alphanumeric LED segmnet display
+            </summary>
+            <remarks>
+            https://www.adafruit.com/product/1911
+            </remarks>
+        </member>
         <member name="M:NanoFramework.Adafruit_LED_Backpack.Adafruit_AlphaNum4.#ctor(System.Device.I2c.I2cConnectionSettings)">
             <inheritdoc/>
         </member>
@@ -21,7 +29,7 @@
             </summary>
             <param name="Position">Character index (0-3)</param>
             <param name="AsciiChar">ASCII character</param>
-            <param name="dot">If true, also light corresponding dot segment</param>
+            <param name="Dot">If true, also light corresponding dot segment</param>
         </member>
         <member name="M:NanoFramework.Adafruit_LED_Backpack.Adafruit_AlphaNum4.WriteDigitAscii(System.Byte,System.UInt16,System.Boolean)">
             <summary>
@@ -29,7 +37,27 @@
             </summary>
             <param name="Position">Character index (0-3)</param>
             <param name="AsciiChar">ASCII character</param>
-            <param name="dot">If true, also light corresponding dot segment</param>
+            <param name="Dot">If true, also light corresponding dot segment</param>
+        </member>
+        <member name="T:NanoFramework.Adafruit_LED_Backpack.Adafruit_LEDBackpack">
+            <summary>
+            Base class for LED backpack devices
+            </summary>
+        </member>
+        <member name="F:NanoFramework.Adafruit_LED_Backpack.Adafruit_LEDBackpack.AlphaFontTable">
+            <summary>
+            Font symbol table
+            </summary>
+        </member>
+        <member name="P:NanoFramework.Adafruit_LED_Backpack.Adafruit_LEDBackpack.I2cDevice">
+            <summary>
+            I2C connection
+            </summary>
+        </member>
+        <member name="P:NanoFramework.Adafruit_LED_Backpack.Adafruit_LEDBackpack.DisplayBuffer">
+            <summary>
+            Raw symbol display buffer
+            </summary>
         </member>
         <member name="M:NanoFramework.Adafruit_LED_Backpack.Adafruit_LEDBackpack.#ctor(System.Device.I2c.I2cConnectionSettings)">
             <summary>
@@ -62,6 +90,9 @@
             <summary>
              Clear display.
             </summary>
+        </member>
+        <member name="M:NanoFramework.Adafruit_LED_Backpack.Adafruit_LEDBackpack.Dispose">
+            <inheritdoc/>
         </member>
         <member name="T:NanoFramework.Adafruit_LED_Backpack.BlinkRate">
             <summary>

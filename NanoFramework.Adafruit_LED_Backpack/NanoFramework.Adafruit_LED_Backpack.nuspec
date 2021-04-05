@@ -2,11 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>NanoFramework.Adafruit_LED_Backpack</id>
-    <version>1.0.0-preview.1</version>
+    <version>1.0.0-preview.2</version>
     <authors>aalbert</authors>
     <owners>TIPConsulting</owners>
     <title>NanoFramework.Adafruit_LED_Backpack</title>
     <description>Nanoframework implementation of Adafruit LED backpack library</description>
+    <tags>Nanoframework Adafruit ht16k33 LED-backpack</tags
     <developmentDependency>false</developmentDependency>
     <projectUrl>https://github.com/TIPConsulting/NanoFramework.Adafruit_LED_Backpack</projectUrl>
     <license type="expression">MIT</license>

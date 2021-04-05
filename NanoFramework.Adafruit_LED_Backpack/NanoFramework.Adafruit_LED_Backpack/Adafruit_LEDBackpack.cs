@@ -3,32 +3,18 @@ using System.Device.I2c;
 
 namespace NanoFramework.Adafruit_LED_Backpack
 {
+    /// <summary>
+    /// Base class for LED backpack devices
+    /// </summary>
     public class Adafruit_LEDBackpack : IDisposable
     {
         private const byte REGISTER_BRIGHTNESS = 0xE0;
         private const byte REGISTER_BLINKRATE = 0x80;
 
-        protected static readonly byte[] _segmentNumberTable =
-        {
-            0x3F, /* 0 */
-            0x06, /* 1 */
-            0x5B, /* 2 */
-            0x4F, /* 3 */
-            0x66, /* 4 */
-            0x6D, /* 5 */
-            0x7D, /* 6 */
-            0x07, /* 7 */
-            0x7F, /* 8 */
-            0x6F, /* 9 */
-            0x77, /* a */
-            0x7C, /* b */
-            0x39, /* C */
-            0x5E, /* d */
-            0x79, /* E */
-            0x71, /* F */
-        };
-
-        protected static readonly ushort[] _alphaFontTable =
+        /// <summary>
+        /// Font symbol table
+        /// </summary>
+        protected static readonly ushort[] AlphaFontTable =
         {
             0b0000000000000001, 0b0000000000000010, 0b0000000000000100,
             0b0000000000001000, 0b0000000000010000, 0b0000000000100000,
@@ -139,7 +125,13 @@ namespace NanoFramework.Adafruit_LED_Backpack
             0b0011111111111111,
         };
 
+        /// <summary>
+        /// I2C connection
+        /// </summary>
         public I2cDevice I2cDevice { get; }
+        /// <summary>
+        /// Raw symbol display buffer
+        /// </summary>
         public ushort[] DisplayBuffer { get; }
 
         /// <summary>
@@ -148,6 +140,11 @@ namespace NanoFramework.Adafruit_LED_Backpack
         /// <param name="ConnSetting"></param>
         public Adafruit_LEDBackpack(I2cConnectionSettings ConnSetting)
         {
+            if (ConnSetting is null)
+            {
+                throw new ArgumentNullException(nameof(ConnSetting));
+            }
+
             DisplayBuffer = new ushort[8];
             I2cDevice = I2cDevice.Create(ConnSetting);
         }
@@ -237,6 +234,7 @@ namespace NanoFramework.Adafruit_LED_Backpack
             DisplayBuffer[7] = 0;
         }
 
+        /// <inheritdoc/>
         public void Dispose()
         {
             I2cDevice.Dispose();
